@@ -10,6 +10,12 @@ ydcx::ydcx(QWidget *parent) :
     ui(new Ui::ydcx)
 {
     ui->setupUi(this);
+    ui->tblWgt_goudian->setColumnWidth(0,130);
+    ui->tblWgt_goudian->setColumnWidth(1,60);
+    ui->tblWgt_goudian->setColumnWidth(2,60);
+    ui->tblWgt_goudian->setColumnWidth(3,60);
+    ui->tblWgt_goudian->setColumnWidth(4,60);
+    ui->tblWgt_goudian->setColumnWidth(5,60);
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     setWindowTitle(tr(u8"北邮用电查询"));
     connect(ui->bt_search,SIGNAL(clicked()),this,SLOT(bt_search_clicked()));
@@ -56,9 +62,9 @@ void ydcx::localAnalyze(QString &html){
     //qDebug()<<rx_number_of_visit.matchedLength();
     //qDebug()<<rx_number_of_visit.capturedTexts();
     qDebug()<<rx_number_of_visit.cap(1);
-    ui->tEdit_fangwenzhe->setText(u8"    亲爱的同学，你是第 " + rx_number_of_visit.cap(1) + u8" 个查询此寝室用电量的人哦！");
+    ui->tEdit_fangwenzhe->setText(u8"    亲爱的同学，你是第 " + rx_number_of_visit.cap(1) + u8" 个查询用电量的人哦！");
 
-    QString str_labfangjianhao("labfangjianhao\\\">(\\d\\d\-\\d{3,4})");
+    QString str_labfangjianhao("labfangjianhao\\\">(\\d{1,2}\-\\d{3,4})");
     QRegExp rx_labfangjianhao(str_labfangjianhao);
     pos = rx_labfangjianhao.indexIn(fileContent,pos);
     //qDebug()<<pos;
@@ -88,7 +94,7 @@ void ydcx::localAnalyze(QString &html){
     while((pos = rx_time_energy.indexIn(fileContent,pos)) != -1){
         //qDebug() << pos;
         qDebug() << rx_time_energy.cap(1) << " " << rx_time_energy.cap(2);
-        ui->listWgt_time_energy->addItem(rx_time_energy.cap(1) + "    " + rx_time_energy.cap(2));
+        ui->listWgt_time_energy->addItem(rx_time_energy.cap(1) + "\t" + rx_time_energy.cap(2));
         pos += rx_time_energy.matchedLength();
     }
 
