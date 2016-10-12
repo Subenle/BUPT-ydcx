@@ -1,4 +1,4 @@
-#include "ydcx.h"
+﻿#include "ydcx.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

@@ -16,6 +16,7 @@ ydcx::ydcx(QWidget *parent) :
     ui->tblWgt_goudian->setColumnWidth(3,60);
     ui->tblWgt_goudian->setColumnWidth(4,60);
     ui->tblWgt_goudian->setColumnWidth(5,60);
+
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     setWindowTitle(tr(u8"北邮用电查询"));
     connect(ui->bt_search,SIGNAL(clicked()),this,SLOT(bt_search_clicked()));
