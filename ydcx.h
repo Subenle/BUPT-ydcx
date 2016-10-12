@@ -23,7 +23,7 @@ protected slots:
     void bt_search_clicked();
     void request_website();
     void replyFinished(QNetworkReply *);
-    void localAnalyze();
+    void localAnalyze(QString &html);
 
 private:
     Ui::ydcx *ui;
